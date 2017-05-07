@@ -13,3 +13,6 @@ That's really all there is to it. I hope someone will find this useful and maybe
 
 Requires Discord.js: https://discord.js.org/
 
+## Thanks
+
+Thanks to this specific StackOverflow post here that made everything easier: http://stackoverflow.com/a/14315468 
