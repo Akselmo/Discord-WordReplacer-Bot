@@ -8,6 +8,10 @@ const client = new Discord.Client();
 // The token of your bot - https://discordapp.com/developers/applications/me
 const token = 'INSERT TOKEN HERE';
 
+//Roll settings
+var minroll = 1;
+var maxroll = 100;
+
 // The ready event is vital, it means that your bot will only start reacting to information
 // from Discord _after_ ready is emitted
 client.on('ready', () => {
@@ -25,9 +29,8 @@ client.on('message', message => {
     var txttmp = text.split(/\s+/)
     var keyword = txttmp[Math.floor(Math.random()*txttmp.length)];
     var new_phrase = text.replace( keyword, "YOUR RANDOM WORD HERE (I prefer the word butt)"); // replace for other word
-    var random = Math.floor((Math.random() * 100) + 1); //Random number between 1 and 100
+    var random = Math.floor((Math.random() * maxroll) + minroll); //Random number between 1 and 100
     console.log('Throwing dice: ' + random);
-    if (random === 42) //42 is the best number, but you can change this to anything you wish.
     {
       message.channel.send(new_phrase);
       console.log("set diceroll true");
