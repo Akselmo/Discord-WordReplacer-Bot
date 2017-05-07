@@ -8,3 +8,8 @@ For example, in my server the random word is "butt" because I'm oh-so-mature.
 Someone says "Hey, I'm new!" and the bot may replace this "Hey, I'm butt!"
 
 That's really all there is to it. I hope someone will find this useful and maybe add it to their own bot!
+
+## Dependencies
+
+Requires Discord.js: https://discord.js.org/
+
