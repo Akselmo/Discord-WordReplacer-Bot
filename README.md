@@ -16,3 +16,4 @@ Requires Discord.js: https://discord.js.org/
 ## Thanks
 
 Thanks to this specific StackOverflow post here that made everything easier: http://stackoverflow.com/a/14315468 
+Big thanks to FM96 on Reddit providing me feedback and tips! https://www.reddit.com/r/discordapp/comments/69u5bc/i_made_a_word_replacer_bot/
