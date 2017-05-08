@@ -9,9 +9,8 @@ const client = new Discord.Client();
 const token = 'INSERT TOKEN HERE';
 
 //Roll settings
-var minroll = 1;
-var maxroll = 100;
-var magicnumber = 42; //Must be a number between minroll and maxroll
+var probability = 100; //Randomizer probability, for example 100 is 1 chance in 100 rolls.
+
 
 // The ready event is vital, it means that your bot will only start reacting to information
 // from Discord _after_ ready is emitted
@@ -19,33 +18,31 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 
-//Dicerolled is a check that stops the bot from spamming
-var dicerolled = false;
 client.on('message', message => {
-
-  if (dicerolled === false)
+  var user1 = message.author.id;
+  var user2 = client.user.id;
+  var isbot = message.author.bot;
+  //Checks if the bot id and last message user id match, and if the last message sender was a bot or not
+  console.log('user1: ' + user1 + ' and user2: ' + user2);
+  console.log('Is the user a bot? ' + isbot);
+  if ((user1 !== user2) && (isbot === false))
   {
-    //Saves message content, splits it per word
+    console.log('Message is not from a bot nor myself. Time to roll probability!');
     var text = message.content;
-    var txttmp = text.split(/\s+/)
+    var txttmp = text.split(/\s+/);
     var keyword = txttmp[Math.floor(Math.random()*txttmp.length)];
-    var new_phrase = text.replace( keyword, "YOUR RANDOM WORD HERE (I prefer the word butt)"); // replace for other word
-    var random = Math.floor((Math.random() * maxroll) + minroll); //Random number between 1 and 100
-    console.log('Throwing dice: ' + random);
-    if (random === magicnumber)
-    {
+    var new_phrase = text.replace( keyword, "butt"); // replace for other word
+    var random = Math.floor((Math.random() * probability));
+    console.log('Throwing dice: ' + random + ". Probability: 1:" + probability);
+    if (random === 1){
       message.channel.send(new_phrase);
-      console.log("set diceroll true");
-      dicerolled = true;
+      console.log('Phrase modified!');
     }
   }
-
   else
   {
-    console.log("set diceroll false");
-    dicerolled = false;
+    console.log("User either was a bot or myself. Doing nothing.");
   }
-
 });
 
 // Log our bot in
